@@ -124,11 +124,8 @@ const PHOTOS = [
     category: "People",
     photographer: "mara",
     img: PLACEHOLDER("foo-01", 900, 1200),
-    likes: 248,
-    comments: [
-      { name: "Dani", text: "We never think about who carries it all.", when: "2d" },
-      { name: "Pao", text: "This hits different 🥹", when: "1d" }
-    ]
+    likes: 0,
+    comments: []
   },
   {
     id: "p02",
@@ -137,10 +134,8 @@ const PHOTOS = [
     category: "Spaces",
     photographer: "kai",
     img: PLACEHOLDER("foo-02", 1000, 800),
-    likes: 176,
-    comments: [
-      { name: "Reese", text: "The light leaking in is everything.", when: "5h" }
-    ]
+    likes: 0,
+    comments: []
   },
   {
     id: "p03",
@@ -149,7 +144,7 @@ const PHOTOS = [
     category: "Objects",
     photographer: "luis",
     img: PLACEHOLDER("foo-03", 1000, 1000),
-    likes: 295,
+    likes: 0,
     comments: []
   },
   {
@@ -159,10 +154,8 @@ const PHOTOS = [
     category: "Moments",
     photographer: "ines",
     img: PLACEHOLDER("foo-04", 900, 1150),
-    likes: 367,
-    comments: [
-      { name: "Mio", text: "So tender. You can feel the tiredness.", when: "3d" }
-    ]
+    likes: 0,
+    comments: []
   },
   {
     id: "p05",
@@ -171,7 +164,7 @@ const PHOTOS = [
     category: "People",
     photographer: "reign",
     img: PLACEHOLDER("foo-05", 950, 1180),
-    likes: 188,
+    likes: 0,
     comments: []
   },
   {
@@ -181,10 +174,8 @@ const PHOTOS = [
     category: "Spaces",
     photographer: "althea",
     img: PLACEHOLDER("foo-06", 1100, 850),
-    likes: 221,
-    comments: [
-      { name: "Lex", text: "Feels like a place with secrets.", when: "2d" }
-    ]
+    likes: 0,
+    comments: []
   },
   {
     id: "p07",
@@ -193,7 +184,7 @@ const PHOTOS = [
     category: "Objects",
     photographer: "luis",
     img: PLACEHOLDER("foo-07", 1000, 1180),
-    likes: 233,
+    likes: 0,
     comments: []
   },
   {
@@ -203,10 +194,8 @@ const PHOTOS = [
     category: "Moments",
     photographer: "ines",
     img: PLACEHOLDER("foo-08", 900, 1200),
-    likes: 312,
-    comments: [
-      { name: "Nico", text: "There's a whole story in these hands.", when: "1d" }
-    ]
+    likes: 0,
+    comments: []
   },
   {
     id: "p09",
@@ -215,7 +204,7 @@ const PHOTOS = [
     category: "People",
     photographer: "jomar",
     img: PLACEHOLDER("foo-09", 1100, 820),
-    likes: 174,
+    likes: 0,
     comments: []
   },
   {
@@ -225,10 +214,8 @@ const PHOTOS = [
     category: "Spaces",
     photographer: "bryan",
     img: PLACEHOLDER("foo-10", 1120, 840),
-    likes: 159,
-    comments: [
-      { name: "Quin", text: "Brutal and beautiful.", when: "4d" }
-    ]
+    likes: 0,
+    comments: []
   },
   {
     id: "p11",
@@ -237,7 +224,7 @@ const PHOTOS = [
     category: "Objects",
     photographer: "carmela",
     img: PLACEHOLDER("foo-11", 950, 1150),
-    likes: 268,
+    likes: 0,
     comments: []
   },
   {
@@ -247,10 +234,8 @@ const PHOTOS = [
     category: "Moments",
     photographer: "noel",
     img: PLACEHOLDER("foo-12", 1150, 800),
-    likes: 289,
-    comments: [
-      { name: "Sol", text: "The emptiness says so much.", when: "2d" }
-    ]
+    likes: 0,
+    comments: []
   }
 ];
 
