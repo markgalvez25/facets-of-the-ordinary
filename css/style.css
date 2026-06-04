@@ -418,7 +418,7 @@ section { position: relative; }
 @keyframes pop { 0%,100% { transform: scale(1); } 40% { transform: scale(1.35); } }
 .like-count { font-weight: 600; font-size: 0.9rem; margin-right: auto; padding-left: 0.3rem; }
 .share-wrap { position: relative; }
-.share-menu { position: absolute; bottom: 54px; right: 0; background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 0.5rem; display: none; flex-direction: column; gap: 0.2rem; min-width: 180px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); z-index: 5; }
+.share-menu { position: absolute; top: calc(100% + 10px); right: 0; background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 0.5rem; display: none; flex-direction: column; gap: 0.2rem; min-width: 200px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); z-index: 20; }
 .share-menu.open { display: flex; }
 .share-menu a, .share-menu button { display: flex; align-items: center; gap: 0.7rem; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.85rem; text-align: left; transition: background 0.2s; width: 100%; }
 .share-menu a:hover, .share-menu button:hover { background: var(--surface); }
@@ -480,11 +480,17 @@ section { position: relative; }
 }
 @media (max-width: 860px) {
   body { font-size: 16px; }
-  .nav-links { position: fixed; inset: 0; flex-direction: column; justify-content: center; gap: 2rem; background: color-mix(in srgb, var(--bg) 97%, transparent); backdrop-filter: blur(20px); transform: translateX(100%); transition: transform 0.5s var(--ease); }
+  /* IMPORTANT: a backdrop-filter on .nav would re-anchor the fixed menu
+     overlay to the nav bar (collapsing it). Use a solid bg on mobile so the
+     full-screen menu stays anchored to the viewport. */
+  .nav.scrolled { background: var(--bg); backdrop-filter: none; }
+  .nav-links { position: fixed; inset: 0; z-index: 1050; flex-direction: column; justify-content: center; gap: 2.4rem; background: var(--bg); transform: translateX(100%); transition: transform 0.5s var(--ease); }
   .nav-links.open { transform: none; }
-  .nav-links a { font-size: 1.4rem; }
+  /* match the :not(.nav-cta) specificity used above, or the size won't apply */
+  .nav-links a:not(.nav-cta) { font-size: 1.5rem; color: var(--text); }
   .nav-cta { display: none; }
   .burger { display: flex; }
+  .scroll-cue { display: none; }  /* would overlap the hero buttons on tall phones */
   .feat-row { grid-template-columns: 1fr; gap: 2rem; }
   .feat-row:nth-child(even) .feat-media { order: 0; }
   .col-grid { grid-template-columns: repeat(2, 1fr); }
@@ -504,6 +510,30 @@ section { position: relative; }
   .grid { columns: 1; }
   .corridor .frame { width: 200px; margin-left: -100px; }
   .ph-card { grid-template-columns: 120px 1fr; gap: 1.2rem; }
+}
+
+/* Corridor → simple swipeable strip on phones (3D walk-through is desktop-only) */
+@media (max-width: 768px) {
+  .corridor.is-flat { height: auto; min-height: 0; padding: clamp(60px, 10vh, 110px) 0; }
+  .corridor.is-flat .corridor-intro {
+    position: relative; left: auto; top: auto; transform: none; width: auto;
+    text-align: left; padding: 0 var(--gutter); margin-bottom: 1.8rem; pointer-events: auto;
+  }
+  .corridor.is-flat .corridor-intro h2 { font-size: clamp(2.4rem, 11vw, 3.4rem); }
+  .corridor.is-flat .corridor-stage { position: relative; inset: auto; perspective: none; }
+  .corridor.is-flat .corridor-floor { display: none; }
+  .corridor.is-flat::after { display: none; }
+  .corridor.is-flat .corridor-track {
+    position: relative; inset: auto; transform: none !important;
+    display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 0 var(--gutter) 1.2rem; -webkit-overflow-scrolling: touch;
+  }
+  .corridor.is-flat .frame {
+    position: relative; top: auto; left: auto; margin: 0;
+    width: 72vw; max-width: 280px; flex: 0 0 auto; transform: none !important;
+    scroll-snap-align: center;
+  }
+  .corridor.is-flat .frame img { height: auto; aspect-ratio: 3 / 4; }
 }
 
 @media (prefers-reduced-motion: reduce) {
