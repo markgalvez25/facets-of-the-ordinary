@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facets of the Ordinary — A Photo Exhibit</title>
+  <meta name="description" content="An immersive photo exhibit finding the extraordinary hidden inside ordinary life.">
+
+  <!-- Fonts: swap these to your brand fonts (also update --font-* in css/style.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- apply saved theme before paint to avoid a flash -->
+  <script>try{if(localStorage.getItem('foto_theme')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============== NAV ============== -->
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="mark"></span>
+        <span>Facets of the Ordinary<small>A Photo Exhibit</small></span>
+      </a>
+      <div class="nav-right">
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="photographers.html">Photographers</a>
+        <a href="gallery.html" class="btn btn-primary nav-cta">Enter Exhibit <span class="arrow">→</span></a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Switch light or dark theme" title="Switch theme">
+        <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M4.2 4.2 5.9 5.9M18.1 18.1l1.7 1.7M2 12h2.4M19.6 12H22M4.2 19.8 5.9 18.1M18.1 5.9l1.7-1.7"/></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="hero-bg" data-parallax="0.18">
+      <img src="https://picsum.photos/seed/foto-hero/1920/1280" alt="">
+    </div>
+    <div class="wrap">
+      <div class="hero-eyebrow reveal">
+        <span class="rule"></span>
+        <span class="eyebrow">Photo Exhibition | MMMA622 - Visual Methods and Photography | 2026</span>
+      </div>
+      <h1 class="display reveal reveal-delay-1">Facets of the <em>Ordinary</em></h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        A walk-through exhibition that turns away from the obvious — the vendor, the product,
+        the crowd — to look instead at the porters, the back rooms, the discarded crates and the
+        quiet moments that quietly keep a place alive.
+      </p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <a href="gallery.html" class="btn btn-primary">Explore the Gallery <span class="arrow">→</span></a>
+        <a href="photographers.html" class="btn btn-ghost">Meet the Photographers</a>
+      </div>
+    </div>
+    <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+  </section>
+
+  <!-- ============== STATEMENT ============== -->
+  <section class="statement">
+    <div class="wrap">
+      <p data-accent="overlook,subject">
+        Every setting runs on the things we overlook — the people, spaces and objects that hold
+        it up but never become the picture. This exhibit makes the overlooked its subject.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============== IMMERSIVE 3D CORRIDOR ============== -->
+  <section class="corridor">
+    <div class="corridor-intro reveal">
+      <span class="eyebrow">The Exhibit</span>
+      <h2 class="display">Walk the Hall</h2>
+    </div>
+    <div class="corridor-stage">
+      <div class="corridor-floor"></div>
+      <div class="corridor-track">
+        <!-- Frames are positioned in 3D by js/main.js; first 8 photos -->
+        <figure class="frame"><div class="matte"><img src="https://picsum.photos/seed/foo-01/600/700" alt=""><figcaption class="cap"><b>The Vegetable Porter</b><span>Mara V.</span></figcaption></div></figure>
+        <figure class="frame"><div class="matte"><img src="https://picsum.photos/seed/foo-02/600/700" alt=""><figcaption class="cap"><b>Storage Behind Stall 14</b><span>Kai M.</span></figcaption></div></figure>
+        <figure class="frame"><div class="matte"><img src="https://picsum.photos/seed/foo-03/600/700" alt=""><figcaption class="cap"><b>Discarded Crates</b><span>Luis T.</span></figcaption></div></figure>
+        <figure class="frame"><div class="matte"><img src="https://picsum.photos/seed/foo-04/600/700" alt=""><figcaption class="cap"><b>Break Between Rushes</b><span>Inés C.</span></figcaption></div></figure>
+        <figure class="frame"><div class="matte"><img src="https://picsum.photos/seed/foo-05/600/700" alt=""><figcaption class="cap"><b>Closing Shift</b><span>Mara V.</span></figcaption></div></figure>
+        <figure class="frame"><div class="matte"><img src="https://picsum.photos/seed/foo-06/600/700" alt=""><figcaption class="cap"><b>Service Corridor</b><span>Kai M.</span></figcaption></div></figure>
+        <figure class="frame"><div class="matte"><img src="https://picsum.photos/seed/foo-07/600/700" alt=""><figcaption class="cap"><b>The Worn Counter</b><span>Luis T.</span></figcaption></div></figure>
+        <figure class="frame"><div class="matte"><img src="https://picsum.photos/seed/foo-08/600/700" alt=""><figcaption class="cap"><b>Counting the Day</b><span>Inés C.</span></figcaption></div></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== THE COLLECTION (paginated) ============== -->
+  <section class="featured collection" id="collection">
+    <div class="wrap">
+      <div class="feat-head">
+        <div>
+          <span class="eyebrow reveal">Selected Works</span>
+          <h2 class="reveal" style="margin-top:.6rem">The Collection</h2>
+          <p class="muted reveal reveal-delay-1" style="margin-top:.8rem;max-width:42ch">Everyday subjects, looked at long enough to become something else. Browse the full set, or open the gallery to react and comment.</p>
+        </div>
+        <a href="gallery.html" class="btn btn-ghost reveal reveal-delay-1">Open full gallery <span class="arrow">→</span></a>
+      </div>
+
+      <div class="col-grid" id="col-grid"><!-- filled + paginated by js/main.js --></div>
+      <nav class="col-pager" id="col-pager" aria-label="Collection pages"></nav>
+    </div>
+  </section>
+
+  <!-- ============== STATS ============== -->
+  <section class="stats">
+    <div class="wrap stats-grid">
+      <div class="stat reveal"><div class="n" data-count="48">0</div><div class="l">Photographs</div></div>
+      <div class="stat reveal reveal-delay-1"><div class="n" data-count="10">0</div><div class="l">Photographers</div></div>
+      <div class="stat reveal reveal-delay-2"><div class="n" data-count="4">0</div><div class="l">Facets of the Ordinary</div></div>
+      <div class="stat reveal reveal-delay-3"><div class="n" data-count="100" data-suffix="%">0%</div><div class="l">Overlooked Subjects</div></div>
+    </div>
+  </section>
+
+  <!-- ============== INSTRUCTOR / ADVISER ============== -->
+  <section class="mentor">
+    <div class="wrap mentor-inner" id="mentor-card"><!-- filled from INSTRUCTOR in js/data.js --></div>
+  </section>
+
+  <!-- ============== CTA ============== -->
+  <section class="cta">
+    <div class="wrap">
+      <span class="eyebrow reveal">The exhibit is open</span>
+      <h2 class="reveal reveal-delay-1">Come look <em>closer.</em></h2>
+      <p class="reveal reveal-delay-2">Step into the gallery, react to the work, and leave a note for the photographers.</p>
+      <a href="gallery.html" class="btn btn-primary reveal reveal-delay-2">Enter the Gallery <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <p class="lead">Facets of the <em>Ordinary</em></p>
+          <p class="muted" style="margin-top:1rem;max-width:34ch">A photo exhibit by a collective of student photographers.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="photographers.html">Photographers</a>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Behance</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Facets of the Ordinary. A student exhibit.</span>
+        <span>Designed as an immersive web experience.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Smooth scroll + scroll animation libraries (progressive enhancement) -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
