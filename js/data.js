@@ -45,71 +45,61 @@ const PHOTOGRAPHERS = [
     id: "mara", name: "Mara Velasco", facet: "People", role: "People — The Unseen Hands",
     location: "Quezon City, PH", portrait: PLACEHOLDER("mara-portrait", 600, 750),
     quote: "Every place is held up by people we walk straight past.",
-    bio: "Mara follows the workers who arrive before the doors open and leave after the lights go out — porters, cleaners, runners. She photographs the labour a setting depends on but rarely looks at.",
-    socials: { instagram: "#", behance: "#" }
+    bio: "Mara follows the workers who arrive before the doors open and leave after the lights go out — porters, cleaners, runners. She photographs the labour a setting depends on but rarely looks at."
   },
   {
     id: "reign", name: "Reign Santos", facet: "People", role: "People — After Hours",
     location: "Bacolod City, PH", portrait: PLACEHOLDER("reign-portrait", 600, 750),
     quote: "Look at who is still working when everyone else has gone home.",
-    bio: "Reign photographs the closing shift — the staff who reset a space for tomorrow long after the crowd has left. Her work insists that the end of the day has a workforce of its own.",
-    socials: { instagram: "#", behance: "#" }
+    bio: "Reign photographs the closing shift — the staff who reset a space for tomorrow long after the crowd has left. Her work insists that the end of the day has a workforce of its own."
   },
   {
     id: "jomar", name: "Jomar Dela Cruz", facet: "People", role: "People — Hands of the City",
     location: "Zamboanga City, PH", portrait: PLACEHOLDER("jomar-portrait", 600, 750),
     quote: "A city is built by people whose faces never make the photo.",
-    bio: "Jomar rides with delivery and transport workers, documenting the side entrances and back doors where everything a place sells actually arrives.",
-    socials: { instagram: "#", behance: "#" }
+    bio: "Jomar rides with delivery and transport workers, documenting the side entrances and back doors where everything a place sells actually arrives."
   },
   {
     id: "kai", name: "Kai Mendoza", facet: "Spaces", role: "Spaces — Forgotten Spaces",
     location: "Cebu City, PH", portrait: PLACEHOLDER("kai-portrait", 600, 750),
     quote: "The back room tells you more than the storefront ever will.",
-    bio: "Kai documents storage corners and service corridors — the places customers are never meant to see. To him, the worn-out edges of a setting are where its real story lives.",
-    socials: { instagram: "#", behance: "#" }
+    bio: "Kai documents storage corners and service corridors — the places customers are never meant to see. To him, the worn-out edges of a setting are where its real story lives."
   },
   {
     id: "althea", name: "Althea Ramos", facet: "Spaces", role: "Spaces — Rooms That Remember",
     location: "Baguio City, PH", portrait: PLACEHOLDER("althea-portrait", 600, 750),
     quote: "Empty rooms still remember everyone who passed through.",
-    bio: "Althea shoots stairwells, stockrooms and the half-lit spaces between destinations — interiors that hold the residue of a hundred ordinary errands.",
-    socials: { instagram: "#", behance: "#" }
+    bio: "Althea shoots stairwells, stockrooms and the half-lit spaces between destinations — interiors that hold the residue of a hundred ordinary errands."
   },
   {
     id: "bryan", name: "Bryan Aquino", facet: "Spaces", role: "Spaces — Side Entrances",
     location: "Tacloban City, PH", portrait: PLACEHOLDER("bryan-portrait", 600, 750),
     quote: "The exit nobody photographs is the one everyone uses.",
-    bio: "Bryan is drawn to loading bays, alleys and back entrances — the thresholds that do all the work while the main doors take the credit.",
-    socials: { instagram: "#", behance: "#" }
+    bio: "Bryan is drawn to loading bays, alleys and back entrances — the thresholds that do all the work while the main doors take the credit."
   },
   {
     id: "luis", name: "Luis Tan", facet: "Objects", role: "Objects — Discarded & Worn",
     location: "Davao City, PH", portrait: PLACEHOLDER("luis-portrait", 600, 750),
     quote: "What a place throws away says what it values.",
-    bio: "A still-life photographer drawn to the broken, the taped-up and the left-behind. Luis treats a cracked crate or a worn counter like a portrait — patient, lit, and seen on its own terms.",
-    socials: { instagram: "#", behance: "#" }
+    bio: "A still-life photographer drawn to the broken, the taped-up and the left-behind. Luis treats a cracked crate or a worn counter like a portrait — patient, lit, and seen on its own terms."
   },
   {
     id: "carmela", name: "Carmela Yu", facet: "Objects", role: "Objects — Wear & Repair",
     location: "Dumaguete City, PH", portrait: PLACEHOLDER("carmela-portrait", 600, 750),
     quote: "Wear and tear is just proof that something was useful.",
-    bio: "Carmela photographs mended tools, taped handles and objects repaired one too many times — the quiet evidence of a thing kept in service far past its first life.",
-    socials: { instagram: "#", behance: "#" }
+    bio: "Carmela photographs mended tools, taped handles and objects repaired one too many times — the quiet evidence of a thing kept in service far past its first life."
   },
   {
     id: "ines", name: "Inés Cardoza", facet: "Moments", role: "Moments — Quiet Moments",
     location: "Iloilo City, PH", portrait: PLACEHOLDER("ines-portrait", 600, 750),
     quote: "The most honest second is the one between the busy ones.",
-    bio: "Inés waits for the pause — the rest between rushes, the counting at close, the breath no one performs for a camera. Her work lingers on the unguarded moments that hold a long day together.",
-    socials: { instagram: "#", behance: "#" }
+    bio: "Inés waits for the pause — the rest between rushes, the counting at close, the breath no one performs for a camera. Her work lingers on the unguarded moments that hold a long day together."
   },
   {
     id: "noel", name: "Noel Pascual", facet: "Moments", role: "Moments — In-Between",
     location: "Vigan City, PH", portrait: PLACEHOLDER("noel-portrait", 600, 750),
     quote: "The truest expression is the one between two tasks.",
-    bio: "Noel photographs waiting itself — the empty aisle, the dimmed stall, the small stillness a place falls into the moment no one needs anything from it.",
-    socials: { instagram: "#", behance: "#" }
+    bio: "Noel photographs waiting itself — the empty aisle, the dimmed stall, the small stillness a place falls into the moment no one needs anything from it."
   }
 ];
 
