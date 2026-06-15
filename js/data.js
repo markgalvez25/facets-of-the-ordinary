@@ -35,9 +35,19 @@ const INSTRUCTOR = {
    personal photo, bio and subject photos arrive.                    */
 const PHOTOGRAPHERS = [
   {
+    id: "aguja", name: "Ayna Vor Aguja", facet: "", role: "Profile coming soon",
+    portrait: PLACEHOLDER_PORTRAIT,
+    bio: "Profile and works coming soon."
+  },
+  {
+    id: "ayao", name: "Lin Mark Ayao", facet: "", role: "Profile coming soon",
+    portrait: PLACEHOLDER_PORTRAIT,
+    bio: "Profile and works coming soon."
+  },
+  {
     id: "galvez", name: "Mark Arnold Galvez", facet: "People", role: "People — Everyday Labour",
     portrait: "images/portraits/galvez.jpg",
-    bio: "Mark turns his lens on the everyday labour we walk past — the quiet obligations people take on to meet their basic needs and keep daily life moving."
+    bio: "Mark Arnold G. Galvez serves as a multimedia instructor and a graphic designer. He provides technical knowledge to students to support creative career paths. Galvez emphasizes digital literacy and critical thinking. He integrates technology within the artificial intelligence era to educate future professionals. His approach connects academic theory with industry standards."
   },
   {
     id: "nanola", name: "Rameses Peter Nañola", facet: "People", role: "People — Hands of the City",
@@ -48,13 +58,18 @@ const PHOTOGRAPHERS = [
   {
     id: "oli", name: "Mac Khenlee Oli", facet: "People", role: "People — Quiet Livelihoods",
     location: "Lingayen, Pangasinan, PH",
-    portrait: PLACEHOLDER_PORTRAIT,
+    portrait: "images/portraits/oli.jpg",
     bio: "Mac Khenlee Oli currently works as a Multimedia Arts instructor at Pangasinan Polytechnic College. A multimedia artist from Lingayen, Pangasinan, he specializes in graphic design, layout, multimedia research, journalistic and creative writing, and content creation. In his free time, he enjoys cooking, watching and reviewing films, playing games, going to the gym, and running. He is particularly fond of the colors orange and black and is passionate about writing on themes related to society, queer experiences, youth, and pop culture."
   },
   {
     id: "sagario", name: "Jesus Zeus Hermes Sagario", facet: "Moments", role: "Moments — Quiet Pauses",
     portrait: PLACEHOLDER_PORTRAIT,
     bio: "Zeus photographs the quiet pauses behind ordinary life — waiting, resting, mourning, studying and healing — the in-between moments most people pass by without noticing."
+  },
+  {
+    id: "sanchez", name: "Albert Sanchez", facet: "", role: "Profile coming soon",
+    portrait: PLACEHOLDER_PORTRAIT,
+    bio: "Profile and works coming soon."
   },
   {
     id: "santos", name: "Rey Christian Santos", facet: "Moments", role: "Moments — In-Between Moments",
@@ -70,23 +85,6 @@ const PHOTOGRAPHERS = [
     id: "villanueva", name: "Charissa Villanueva", facet: "Spaces", role: "Spaces — Between the Stops",
     portrait: "images/portraits/villanueva.jpg",
     bio: "Charissa Villanueva works as a freelance digital artist, who specializes in video editing, graphic design, and content creation. Outside of work and school, they enjoy animation, watching films, exploring new places, and trying good food. She is a church person who values faith, family, and serving the community. Who is drawn to the colors orange and purple!"
-  },
-
-  /* --- Photos still to come — listed by name for now --- */
-  {
-    id: "aguja", name: "Ayna Vor Aguja", facet: "", role: "Profile coming soon",
-    portrait: PLACEHOLDER_PORTRAIT,
-    bio: "Profile and works coming soon."
-  },
-  {
-    id: "ayao", name: "Lin Mark Ayao", facet: "", role: "Profile coming soon",
-    portrait: PLACEHOLDER_PORTRAIT,
-    bio: "Profile and works coming soon."
-  },
-  {
-    id: "sanchez", name: "Albert Sanchez", facet: "", role: "Profile coming soon",
-    portrait: PLACEHOLDER_PORTRAIT,
-    bio: "Profile and works coming soon."
   },
   {
     id: "watin", name: "Garry Allen Watin", facet: "", role: "Profile coming soon",

@@ -135,6 +135,13 @@ let lenis = null;
   const track = document.querySelector(".corridor-track");
   if (!stage || !track) return;
 
+  // On phones/small screens the 3D walk-through clips off-screen — use a
+  // simple swipeable strip instead (laid out by CSS via the .is-flat class).
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    stage.classList.add("is-flat");
+    return;
+  }
+
   // Position frames in 3D space: alternating walls, increasing depth.
   const frames = [...track.querySelectorAll(".frame")];
   const GAP = 760;          // distance between frames along Z
