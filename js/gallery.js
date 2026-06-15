@@ -256,17 +256,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (card) card.innerHTML = (Store.isLiked(p.id) ? ICONS.heartFill : ICONS.heart) + `<span>${totalLikes(p)}</span>`;
   }
 
+  const stage = lb.querySelector(".lb-stage");
+  const panelHead = lb.querySelector(".lb-panel-head");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   function open(list, index) {
     viewList = list; viewIndex = index;
-    show(viewList[viewIndex]);
+    show(viewList[viewIndex], 0);       // 0 = open (gentle zoom-in)
     lb.classList.add("open");
     document.body.style.overflow = "hidden";
     if (window.lenis) window.lenis.stop();
   }
 
-  function show(p) {
+  // dir: +1 next, -1 prev, 0 initial open. Animates the photo and panel like
+  // walking from frame to frame in an exhibition.
+  function show(p, dir = 1) {
     const ph = getPhotographer(p.photographer);
-    el.img.src = p.img;
     el.img.alt = p.title;
     el.cat.textContent = p.category;
     el.title.textContent = p.title;
@@ -278,7 +283,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderComments(p);
     el.shareMenu.classList.remove("open");
     buildShareMenu(p);
+
+    // Panel text fade-up
+    if (panelHead && !reduceMotion) {
+      panelHead.classList.remove("lb-rise");
+      void panelHead.offsetWidth;
+      panelHead.classList.add("lb-rise");
+    }
+
+    if (reduceMotion) { el.img.src = p.img; return; }
+
+    // Photo transition: fade/slide the new image in once it has decoded, so the
+    // change is smooth with no flash of a half-loaded picture.
+    const animClass = dir < 0 ? "lb-enter-prev" : dir > 0 ? "lb-enter-next" : "lb-enter-open";
+    const next = new Image();
+    const reveal = () => {
+      el.img.src = p.img;
+      el.img.classList.remove("lb-enter-next", "lb-enter-prev", "lb-enter-open");
+      void el.img.offsetWidth;            // restart the animation
+      el.img.classList.add(animClass);
+    };
+    next.onload = reveal;
+    next.onerror = reveal;                 // still swap even if preload fails
+    next.src = p.img;
+    if (next.complete) reveal();           // cached image: reveal immediately
   }
+
+  el.img.addEventListener("animationend", () => {
+    el.img.classList.remove("lb-enter-next", "lb-enter-prev", "lb-enter-open");
+  });
 
   function close() {
     lb.classList.remove("open");
@@ -288,7 +321,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function go(dir) {
     viewIndex = (viewIndex + dir + viewList.length) % viewList.length;
-    show(viewList[viewIndex]);
+    show(viewList[viewIndex], dir);
   }
 
   async function like(p, forceOn) {
