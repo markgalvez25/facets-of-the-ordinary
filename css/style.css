@@ -397,7 +397,22 @@ section { position: relative; }
 .lightbox.open { display: block; }
 .lb-inner { height: 100%; display: grid; grid-template-columns: 1.5fr 1fr; }
 .lb-stage { position: relative; display: grid; place-items: center; padding: clamp(20px, 4vw, 60px); overflow: hidden; }
-.lb-stage img { max-width: 100%; max-height: 86vh; object-fit: contain; border-radius: 6px; box-shadow: 0 40px 120px rgba(0,0,0,0.7); }
+.lb-stage img { max-width: 100%; max-height: 86vh; object-fit: contain; border-radius: 6px; box-shadow: 0 40px 120px rgba(0,0,0,0.7); will-change: transform, opacity; }
+
+/* ---- Exhibition transition: walking frame to frame in the viewer ---- */
+.lb-enter-next { animation: lbEnterNext 0.55s var(--ease) both; }
+.lb-enter-prev { animation: lbEnterPrev 0.55s var(--ease) both; }
+.lb-enter-open { animation: lbEnterOpen 0.6s var(--ease) both; }
+@keyframes lbEnterNext { from { opacity: 0; transform: translateX(46px) scale(0.965); } to { opacity: 1; transform: none; } }
+@keyframes lbEnterPrev { from { opacity: 0; transform: translateX(-46px) scale(0.965); } to { opacity: 1; transform: none; } }
+@keyframes lbEnterOpen { from { opacity: 0; transform: scale(0.93); } to { opacity: 1; transform: none; } }
+/* Panel title/caption rise as the photo changes */
+.lb-panel-head.lb-rise { animation: lbRise 0.55s var(--ease) both; }
+@keyframes lbRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .lb-enter-next, .lb-enter-prev, .lb-enter-open, .lb-panel-head.lb-rise { animation: none; }
+}
+
 .lb-heart-burst { position: absolute; width: 120px; height: 120px; pointer-events: none; opacity: 0; }
 .lb-heart-burst.go { animation: burst 0.9s var(--ease); }
 @keyframes burst { 0% { opacity: 0; transform: scale(0.2); } 15% { opacity: 1; } 50% { transform: scale(1.1); opacity: 1; } 100% { opacity: 0; transform: scale(1.3); } }
