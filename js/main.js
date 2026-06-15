@@ -235,9 +235,17 @@ let lenis = null;
   if (!grid || !pager || typeof PHOTOS === "undefined") return;
 
   const PER_PAGE = 8;                                   // tune to taste
-  // Show the strongest work first: order by likes (highest first), so the
-  // most-liked photos land on page 1 and the very first tile is the top photo.
-  const ORDERED = [...PHOTOS].sort((a, b) => (b.likes || 0) - (a.likes || 0));
+  // Show the strongest work first. Primary sort = likes (highest first), so once
+  // real visitors start liking, popular photos rise to page 1 and the top tile.
+  // Tie-breaker (all photos start at 0 likes in production) = the curated
+  // FEATURED_ORDER, so the best-looking images still lead page 1 from day one.
+  const RANK = Object.fromEntries(
+    (typeof FEATURED_ORDER !== "undefined" ? FEATURED_ORDER : []).map((id, i) => [id, i])
+  );
+  const ORDERED = [...PHOTOS].sort((a, b) =>
+    ((b.likes || 0) - (a.likes || 0)) ||
+    ((RANK[a.id] ?? 999) - (RANK[b.id] ?? 999))
+  );
   const pages = Math.max(1, Math.ceil(ORDERED.length / PER_PAGE));
   let cur = 1;
 
