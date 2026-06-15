@@ -235,12 +235,15 @@ let lenis = null;
   if (!grid || !pager || typeof PHOTOS === "undefined") return;
 
   const PER_PAGE = 8;                                   // tune to taste
-  const pages = Math.max(1, Math.ceil(PHOTOS.length / PER_PAGE));
+  // Show the strongest work first: order by likes (highest first), so the
+  // most-liked photos land on page 1 and the very first tile is the top photo.
+  const ORDERED = [...PHOTOS].sort((a, b) => (b.likes || 0) - (a.likes || 0));
+  const pages = Math.max(1, Math.ceil(ORDERED.length / PER_PAGE));
   let cur = 1;
 
   function render() {
     const start = (cur - 1) * PER_PAGE;
-    grid.innerHTML = PHOTOS.slice(start, start + PER_PAGE).map(p => {
+    grid.innerHTML = ORDERED.slice(start, start + PER_PAGE).map(p => {
       const ph = getPhotographer(p.photographer);
       return `
         <a class="col-card" href="gallery.html?photo=${p.id}">
