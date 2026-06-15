@@ -46,6 +46,7 @@ const PHOTOGRAPHERS = [
   },
   {
     id: "galvez", name: "Mark Arnold Galvez", facet: "People", role: "People — Everyday Labour",
+    location: "Caloocan City, Philippines",
     portrait: "images/portraits/galvez.jpg",
     bio: "Mark Arnold G. Galvez serves as a multimedia instructor and a graphic designer. He provides technical knowledge to students to support creative career paths. Galvez emphasizes digital literacy and critical thinking. He integrates technology within the artificial intelligence era to educate future professionals. His approach connects academic theory with industry standards."
   },
