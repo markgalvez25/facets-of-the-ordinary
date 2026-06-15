@@ -24,7 +24,7 @@ const PLACEHOLDER_PORTRAIT = "images/portraits/_placeholder.jpg";
 const INSTRUCTOR = {
   name: "Prof. Jonah A. Lim",
   title: "Exhibit Adviser & Photography Instructor",
-  institution: "[Department / School]",
+  institution: "[SomDA / Mapua University]",
   portrait: PLACEHOLDER_PORTRAIT,
   foreword: "I asked them to photograph what a place would rather you didn't notice. What they brought back is a quiet argument that nothing in a setting is truly ordinary."
 };
