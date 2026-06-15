@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   /* -------- Build the grid -------- */
   let activeFilter = "All";
+  let phLock = null;            // when set, the grid + lightbox are locked to one photographer's photos
 
   function cardHTML(p) {
     const ph = getPhotographer(p.photographer);
@@ -133,6 +134,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function currentList() {
+    if (phLock) return phLock;   // locked to a single photographer's collection
     return activeFilter === "All" ? PHOTOS : PHOTOS.filter(p => p.category === activeFilter);
   }
 
@@ -391,21 +393,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     const allBtn = filterBar.querySelector("[data-go-all]");
     if (allBtn) allBtn.addEventListener("click", () => { location.href = "gallery.html"; });
 
+    // Lock the grid AND the lightbox navigation to this photographer's photos,
+    // so the single card-click handler (which uses currentList()) can never fall
+    // back to the full gallery.
+    phLock = list;
     const note = document.getElementById("filter-note");
     if (list.length) {
       grid.innerHTML = list.map(cardHTML).join("");
       grid.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
       if (note) note.textContent = `Showing ${list.length} ${list.length === 1 ? "work" : "works"} by ${phName}`;
-      // clicking these cards should open within this filtered set
-      grid.onclick = e => {
-        const card = e.target.closest(".card");
-        if (!card) return;
-        open(list, list.findIndex(p => p.id === card.dataset.id));
-      };
     } else {
       // Photographer is listed but hasn't uploaded any photos yet — show an
       // empty state instead of falling back to the full gallery.
-      grid.onclick = null;
       grid.innerHTML =
         `<div style="column-span:all;-webkit-column-span:all;text-align:center;padding:clamp(40px,8vh,90px) 1rem;color:var(--muted)">
            <p style="font-size:1.1rem;color:var(--text)">${phName} hasn't uploaded any photos yet.</p>
