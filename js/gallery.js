@@ -379,18 +379,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   /* -------- Deep links: filter by photographer, or open a photo -------- */
   if (phFilter && filterBar) {
     const list = PHOTOS.filter(p => p.photographer === phFilter);
+    const phName = getPhotographer(phFilter).name;
+
+    // Viewing ONE photographer's collection: category filters don't apply here,
+    // so replace them with the photographer's name (plus a way back to all works).
+    // This runs whether or not they have photos yet, so an empty collection no
+    // longer falls back to showing everyone's photos with the category filters.
+    filterBar.innerHTML =
+      `<button class="active" aria-current="true">${phName}</button>` +
+      `<button data-go-all>← All works</button>`;
+    const allBtn = filterBar.querySelector("[data-go-all]");
+    if (allBtn) allBtn.addEventListener("click", () => { location.href = "gallery.html"; });
+
+    const note = document.getElementById("filter-note");
     if (list.length) {
-      // Viewing ONE photographer's collection: category filters don't apply here,
-      // so replace them with the photographer's name (plus a way back to all works).
-      const phName = getPhotographer(phFilter).name;
-      filterBar.innerHTML =
-        `<button class="active" aria-current="true">${phName}</button>` +
-        `<button data-go-all>← All works</button>`;
-      const allBtn = filterBar.querySelector("[data-go-all]");
-      if (allBtn) allBtn.addEventListener("click", () => { location.href = "gallery.html"; });
       grid.innerHTML = list.map(cardHTML).join("");
       grid.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
-      const note = document.getElementById("filter-note");
       if (note) note.textContent = `Showing ${list.length} ${list.length === 1 ? "work" : "works"} by ${phName}`;
       // clicking these cards should open within this filtered set
       grid.onclick = e => {
@@ -398,6 +402,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!card) return;
         open(list, list.findIndex(p => p.id === card.dataset.id));
       };
+    } else {
+      // Photographer is listed but hasn't uploaded any photos yet — show an
+      // empty state instead of falling back to the full gallery.
+      grid.onclick = null;
+      grid.innerHTML =
+        `<div style="column-span:all;-webkit-column-span:all;text-align:center;padding:clamp(40px,8vh,90px) 1rem;color:var(--muted)">
+           <p style="font-size:1.1rem;color:var(--text)">${phName} hasn't uploaded any photos yet.</p>
+           <p style="margin-top:.5rem;font-size:.92rem">This collection is coming soon — check back later.</p>
+         </div>`;
+      if (note) note.textContent = `No works by ${phName} yet`;
     }
   }
   const photoParam = params.get("photo");
