@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       `<button class="${i === 0 ? "active" : ""}" data-cat="${c}">${c}</button>`).join("");
     filterBar.addEventListener("click", e => {
       const btn = e.target.closest("button");
-      if (!btn) return;
+      if (!btn || !btn.dataset.cat) return;   // ignore non-category buttons (e.g. the photographer chip)
       activeFilter = btn.dataset.cat;
       filterBar.querySelectorAll("button").forEach(b => b.classList.toggle("active", b === btn));
       render();
@@ -380,12 +380,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (phFilter && filterBar) {
     const list = PHOTOS.filter(p => p.photographer === phFilter);
     if (list.length) {
-      activeFilter = "All";
-      filterBar.querySelectorAll("button").forEach(b => b.classList.toggle("active", b.dataset.cat === "All"));
+      // Viewing ONE photographer's collection: category filters don't apply here,
+      // so replace them with the photographer's name (plus a way back to all works).
+      const phName = getPhotographer(phFilter).name;
+      filterBar.innerHTML =
+        `<button class="active" aria-current="true">${phName}</button>` +
+        `<button data-go-all>← All works</button>`;
+      const allBtn = filterBar.querySelector("[data-go-all]");
+      if (allBtn) allBtn.addEventListener("click", () => { location.href = "gallery.html"; });
       grid.innerHTML = list.map(cardHTML).join("");
       grid.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
       const note = document.getElementById("filter-note");
-      if (note) note.textContent = `Showing ${list.length} works by ${getPhotographer(phFilter).name}`;
+      if (note) note.textContent = `Showing ${list.length} ${list.length === 1 ? "work" : "works"} by ${phName}`;
       // clicking these cards should open within this filtered set
       grid.onclick = e => {
         const card = e.target.closest(".card");
