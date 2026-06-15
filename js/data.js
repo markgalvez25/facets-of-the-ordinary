@@ -22,7 +22,7 @@ const PLACEHOLDER_PORTRAIT = "images/portraits/_placeholder.jpg";
 /* ---------------------- Instructor (Home page) ---------------------- */
 /* Replace with your real adviser / instructor details. */
 const INSTRUCTOR = {
-  name: "Prof. [Instructor Name]",
+  name: "Prof. Jonah A. Lim",
   title: "Exhibit Adviser & Photography Instructor",
   institution: "[Department / School]",
   portrait: PLACEHOLDER_PORTRAIT,
