@@ -408,7 +408,9 @@ section { position: relative; }
   --accent: #cba35c; --accent-2: #e7d4ab;
   --line: rgba(244, 239, 230, 0.13);
   --btn-bg: #cba35c; --btn-fg: #1a1407; --btn-bg-hover: #e7d4ab;
+  color: var(--text);   /* base colour so inherited text (title, name, counts) stays light in both themes */
 }
+.lb-meta h2, .lb-author .nm, .like-count { color: var(--text); }
 .lb-inner { min-height: 100%; display: flex; flex-direction: column; align-items: center; padding: clamp(56px, 7vh, 92px) clamp(14px, 3vw, 40px) clamp(40px, 7vh, 90px); }
 
 /* The coverflow stage: blurred neighbours flank the big, sharp focused photo */
