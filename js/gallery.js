@@ -172,15 +172,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   lb.innerHTML = `
     <button class="lb-close" aria-label="Close">${ICONS.close}</button>
-    <button class="lb-nav lb-prev" aria-label="Previous">${ICONS.prev}</button>
-    <button class="lb-nav lb-next" aria-label="Next">${ICONS.next}</button>
     <div class="lb-inner">
-      <div class="lb-stage">
-        <img id="lb-img" alt="">
-        <div class="lb-heart-burst" style="color:var(--heart)">${ICONS.heartFill}</div>
+      <div class="lb-stage-row">
+        <button class="lb-nav lb-prev" aria-label="Previous">${ICONS.prev}</button>
+        <div class="lb-deck">
+          <img class="lb-side lb-side-prev" id="lb-prev-img" alt="" aria-hidden="true">
+          <figure class="lb-focus">
+            <img id="lb-img" alt="">
+            <div class="lb-heart-burst" style="color:var(--heart)">${ICONS.heartFill}</div>
+          </figure>
+          <img class="lb-side lb-side-next" id="lb-next-img" alt="" aria-hidden="true">
+        </div>
+        <button class="lb-nav lb-next" aria-label="Next">${ICONS.next}</button>
       </div>
-      <div class="lb-panel">
-        <div class="lb-panel-head">
+
+      <div class="lb-info">
+        <div class="lb-meta">
           <span class="lb-cat" id="lb-cat"></span>
           <h2 id="lb-title"></h2>
           <p id="lb-caption"></p>
@@ -211,6 +218,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const el = {
     img: lb.querySelector("#lb-img"),
+    prevImg: lb.querySelector("#lb-prev-img"),
+    nextImg: lb.querySelector("#lb-next-img"),
     burst: lb.querySelector(".lb-heart-burst"),
     cat: lb.querySelector("#lb-cat"),
     title: lb.querySelector("#lb-title"),
@@ -256,20 +265,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (card) card.innerHTML = (Store.isLiked(p.id) ? ICONS.heartFill : ICONS.heart) + `<span>${totalLikes(p)}</span>`;
   }
 
-  const stage = lb.querySelector(".lb-stage");
-  const panelHead = lb.querySelector(".lb-panel-head");
+  const meta = lb.querySelector(".lb-meta");
+  const navPrev = lb.querySelector(".lb-nav.lb-prev");
+  const navNext = lb.querySelector(".lb-nav.lb-next");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function open(list, index) {
     viewList = list; viewIndex = index;
     show(viewList[viewIndex], 0);       // 0 = open (gentle zoom-in)
     lb.classList.add("open");
+    lb.scrollTop = 0;
     document.body.style.overflow = "hidden";
     if (window.lenis) window.lenis.stop();
   }
 
-  // dir: +1 next, -1 prev, 0 initial open. Animates the photo and panel like
-  // walking from frame to frame in an exhibition.
+  // dir: +1 next, -1 prev, 0 initial open. The focused photo is centred and big;
+  // the previous/next photos sit blurred on either side.
   function show(p, dir = 1) {
     const ph = getPhotographer(p.photographer);
     el.img.alt = p.title;
@@ -284,11 +295,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     el.shareMenu.classList.remove("open");
     buildShareMenu(p);
 
-    // Panel text fade-up
-    if (panelHead && !reduceMotion) {
-      panelHead.classList.remove("lb-rise");
-      void panelHead.offsetWidth;
-      panelHead.classList.add("lb-rise");
+    // Blurred neighbours on the sides (hidden when there's only one photo)
+    const n = viewList.length;
+    const prevP = n > 1 ? viewList[(viewIndex - 1 + n) % n] : null;
+    const nextP = n > 1 ? viewList[(viewIndex + 1) % n] : null;
+    if (prevP) { el.prevImg.src = prevP.img; el.prevImg.style.display = ""; } else { el.prevImg.style.display = "none"; }
+    if (nextP) { el.nextImg.src = nextP.img; el.nextImg.style.display = ""; } else { el.nextImg.style.display = "none"; }
+    navPrev.style.display = n > 1 ? "" : "none";
+    navNext.style.display = n > 1 ? "" : "none";
+
+    // Metadata fade-up
+    if (meta && !reduceMotion) {
+      meta.classList.remove("lb-rise");
+      void meta.offsetWidth;
+      meta.classList.add("lb-rise");
     }
 
     if (reduceMotion) { el.img.src = p.img; return; }
@@ -367,9 +387,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   lb.querySelector(".lb-close").addEventListener("click", close);
-  lb.querySelector(".lb-prev").addEventListener("click", () => go(-1));
-  lb.querySelector(".lb-next").addEventListener("click", () => go(1));
-  lb.addEventListener("click", e => { if (e.target === lb) close(); });
+  lb.querySelector(".lb-nav.lb-prev").addEventListener("click", () => go(-1));
+  lb.querySelector(".lb-nav.lb-next").addEventListener("click", () => go(1));
+  el.prevImg.addEventListener("click", () => go(-1));   // click a side photo to walk to it
+  el.nextImg.addEventListener("click", () => go(1));
+  lb.addEventListener("click", e => { if (e.target === lb || e.target.classList.contains("lb-inner") || e.target.classList.contains("lb-stage-row") || e.target.classList.contains("lb-deck")) close(); });
 
   el.like.addEventListener("click", () => like(viewList[viewIndex]));
 
