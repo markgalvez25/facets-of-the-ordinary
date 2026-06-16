@@ -120,16 +120,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   let activeFilter = "All";
   let phLock = null;            // when set, the grid + lightbox are locked to one photographer's photos
 
+  // Catalogue plate numbers follow the curated FEATURED_ORDER (Plate 01 = lead piece)
+  const PLATE = {};
+  (typeof FEATURED_ORDER !== "undefined" ? FEATURED_ORDER : PHOTOS.map(p => p.id))
+    .forEach((id, i) => { PLATE[id] = i + 1; });
+  // A couple of strong, landscape works are hung as full-width "feature walls"
+  const FEATURE = new Set(["santos-3", "watin-3"]);
+
   function cardHTML(p) {
     const ph = getPhotographer(p.photographer);
+    const plate = String(PLATE[p.id] || 0).padStart(2, "0");
+    const feat = FEATURE.has(p.id) ? " feature" : "";
     return `
-      <article class="card reveal" data-id="${p.id}">
-        <img src="${p.img}" alt="${p.title}" loading="lazy">
-        <div class="card-meta">${Store.isLiked(p.id) ? ICONS.heartFill : ICONS.heart}<span>${totalLikes(p)}</span></div>
-        <div class="card-info">
-          <h3>${p.title}</h3>
-          <div class="by">${ph.name} · ${p.category}</div>
+      <article class="card reveal${feat}" data-id="${p.id}">
+        <div class="frame">
+          <img src="${p.img}" alt="${p.title}" loading="lazy">
+          <div class="card-meta">${Store.isLiked(p.id) ? ICONS.heartFill : ICONS.heart}<span>${totalLikes(p)}</span></div>
         </div>
+        <figcaption class="placard">
+          <span class="plate">Plate ${plate}</span>
+          <h3>${p.title}</h3>
+          <div class="by">${ph.name}</div>
+          <span class="facet">${p.category}</span>
+        </figcaption>
       </article>`;
   }
 
