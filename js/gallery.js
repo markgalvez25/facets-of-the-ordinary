@@ -138,9 +138,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     return activeFilter === "All" ? PHOTOS : PHOTOS.filter(p => p.category === activeFilter);
   }
 
+  // Reveal photos as they scroll into view (each one "develops" in), with a
+  // gentle stagger for any that enter together. One-time per card.
+  const cardObserver = ("IntersectionObserver" in window)
+    ? new IntersectionObserver((entries) => {
+        entries.filter(e => e.isIntersecting).forEach((e, i) => {
+          cardObserver.unobserve(e.target);
+          setTimeout(() => e.target.classList.add("in"), Math.min(i, 8) * 55);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" })
+    : null;
+
+  function revealCards(container) {
+    const cards = container.querySelectorAll(".card.reveal:not(.in)");
+    if (!cardObserver) { cards.forEach(c => c.classList.add("in")); return; }
+    cards.forEach(c => cardObserver.observe(c));
+  }
+
   function render() {
     grid.innerHTML = currentList().map(cardHTML).join("");
-    grid.querySelectorAll(".reveal").forEach((el, i) => setTimeout(() => el.classList.add("in"), 40 + i * 25));
+    revealCards(grid);
   }
 
   /* -------- Filters -------- */
@@ -455,7 +472,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const note = document.getElementById("filter-note");
     if (list.length) {
       grid.innerHTML = list.map(cardHTML).join("");
-      grid.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
+      revealCards(grid);
       if (note) note.textContent = `Showing ${list.length} ${list.length === 1 ? "work" : "works"} by ${phName}`;
     } else {
       // Photographer is listed but hasn't uploaded any photos yet — show an
