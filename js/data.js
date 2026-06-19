@@ -25,7 +25,7 @@ const INSTRUCTOR = {
   name: "Prof. Jonah A. Lim",
   title: "Exhibit Adviser & Photography Instructor",
   institution: "[SomDA / Mapua University]",
-  portrait: PLACEHOLDER_PORTRAIT,
+  portrait: "images/portraits/instructor.jpg",
   foreword: "I asked them to photograph what a place would rather you didn't notice. What they brought back is a quiet argument that nothing in a setting is truly ordinary."
 };
 
@@ -66,8 +66,8 @@ const PHOTOGRAPHERS = [
   },
   {
     id: "sagario", name: "Jesus Zeus Hermes Sagario", facet: "Moments", role: "Moments — Quiet Pauses",
-    portrait: PLACEHOLDER_PORTRAIT,
-    bio: "Zeus photographs the quiet pauses behind ordinary life — waiting, resting, mourning, studying and healing — the in-between moments most people pass by without noticing."
+    portrait: "images/portraits/sagario.jpg",
+    bio: "Jesus Zeus Hermes V. Sagario is an Arts and Design instructor specializing in 3D modeling, animation, and multimedia arts. With a strong foundation in digital illustration and ongoing graduate studies toward a master's degree in Multimedia Arts, he brings a balanced integration of industry experience, creative practice, and academic discipline to the classroom. His teaching approach combines classical art foundations — such as drawing, composition, and visual storytelling — with contemporary digital workflows, production pipelines, and creative technologies. Through this integration, he helps students develop creativity, critical thinking, visual literacy, and technical fluency. Committed to preparing learners for the demands of an evolving media and design landscape, Zeus continues to advance as both an educator and creative practitioner through research, professional development, and artistic production. He guides students in creating portfolio-ready work while encouraging them to engage meaningfully with the role of design, media, and technology in contemporary culture."
   },
   {
     id: "sanchez", name: "Albert Sanchez", facet: "People", role: "People — Market & Community",
