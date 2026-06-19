@@ -246,12 +246,16 @@ const PHOTOS = [
     likes: 0, comments: []
   },
   {
-    id: "valeza-5", title: "Untitled", category: "People", photographer: "valeza",
-    img: "images/photos/valeza-5.jpg", caption: "", likes: 0, comments: []
+    id: "valeza-5", title: "A Small Break in a Big Day", category: "People", photographer: "valeza",
+    img: "images/photos/valeza-5.jpg",
+    caption: "Seated quietly in the middle of the market, a young boy enjoys a simple snack while life carries on around him. Vendors call out to customers, people pass by, and the day moves at its usual pace. For a brief moment, he steps away from the noise and responsibilities, finding comfort in something as simple as a snack. It is an ordinary scene, yet it reflects a childhood shaped by family, work, and the everyday realities of life.",
+    likes: 0, comments: []
   },
   {
-    id: "valeza-6", title: "Untitled", category: "People", photographer: "valeza",
-    img: "images/photos/valeza-6.jpg", caption: "", likes: 0, comments: []
+    id: "valeza-6", title: "Stillness Before the Ride", category: "Moments", photographer: "valeza",
+    img: "images/photos/valeza-6.jpg",
+    caption: "An hour passes, and the pedicab driver kneels beside his ride, waiting not just for a passenger, but for the rhythm of the day to begin.",
+    likes: 0, comments: []
   },
 
   /* ---- Charissa Villanueva — "Between the Stops" ---- */
