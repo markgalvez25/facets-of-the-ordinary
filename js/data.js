@@ -219,6 +219,12 @@ const PHOTOS = [
     caption: "A street cleaner sweeps fallen leaves from a quiet roadside walkway. While their work often goes unnoticed, maintenance workers help preserve the cleanliness, safety, and welcoming atmosphere of shared public spaces.",
     likes: 0, comments: []
   },
+  {
+    id: "santos-5", title: "Silent Care", category: "People", photographer: "santos",
+    img: "images/photos/santos-5.jpg",
+    caption: "A maintenance worker stands among tall trees, holding a sack with a broom nearby. Soft sunlight and blurred foreground draw focus to the subject, while people and a playground in the background create contrast highlighting quiet work behind a lively public space.",
+    likes: 0, comments: []
+  },
 
   /* ---- Richard Valeza — market & street life ---- */
   {
@@ -437,7 +443,7 @@ const FEATURED_ORDER = [
   "valeza-1", "sagario-2", "galvez-2", "watin-5",
   // Page 6
   "villanueva-5", "aguja-2", "valeza-4", "sagario-5",
-  "sagario-4", "santos-4", "valeza-5", "valeza-6"
+  "sagario-4", "santos-4", "santos-5", "valeza-5", "valeza-6"
 ];
 
 /* helper: look up a photographer record by id */
