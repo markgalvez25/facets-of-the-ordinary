@@ -126,6 +126,19 @@
         <a href="photographers.html" class="btn btn-ghost">Meet the Photographers</a>
       </div>
     </section>
+
+    <!-- ============== EVALUATION FORM ============== -->
+    <section class="faq-evaluate" id="evaluate">
+      <span class="eyebrow">Evaluate the Exhibit</span>
+      <h2>Share your feedback</h2>
+      <p>Tell us what you thought of the exhibit. Your answers are sent straight to our evaluation form, and they help us make it better.</p>
+      <div class="form-embed">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSehIpG3Znuo0Upjob33JKM_dE1HP9fZGTfv0S3NW5eRErciTw/viewform?embedded=true"
+          title="Exhibit Evaluation Form"
+          loading="lazy" width="100%" height="1320" frameborder="0" marginheight="0" marginwidth="0">Loading the form…</iframe>
+      </div>
+    </section>
   </div>
 
   <!-- ============== FOOTER ============== -->
@@ -145,18 +158,32 @@
         </div>
         <div>
           <h4>Evaluation</h4>
-          <p class="muted" style="font-size:0.9rem; margin-bottom:1.1rem; max-width:28ch">Share your overall evaluation of the exhibit project — we'd love your feedback.</p>
-          <!-- TODO: replace href="#" with your evaluation form link (e.g. a Google Form) -->
-          <a href="#" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:.74rem; padding:.6em 1.2em">Evaluate the Exhibit <span class="arrow">→</span></a>
+          <p class="muted" style="font-size:0.9rem; margin-bottom:1.1rem; max-width:28ch">Tell us what you thought of the exhibit. Your feedback helps us make it better.</p>
+          <a href="#evaluate" class="btn btn-ghost" style="font-size:.74rem; padding:.6em 1.2em">Evaluate the Exhibit <span class="arrow">→</span></a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© <span data-year>2026</span> Facets of the Ordinary. A student exhibit.</span>
-        <span>Designed as an immersive web experience.</span>
+        <span>An online photo exhibit, best explored slowly.</span>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Smoothly scroll to the evaluation form when arriving via #evaluate (footer link or another page)
+    (function () {
+      function toEvaluate() {
+        var el = document.getElementById('evaluate');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      if (location.hash === '#evaluate') {
+        window.addEventListener('load', function () { setTimeout(toEvaluate, 350); });
+      }
+      document.querySelectorAll('a[href="#evaluate"]').forEach(function (a) {
+        a.addEventListener('click', function (e) { e.preventDefault(); history.replaceState(null, '', '#evaluate'); toEvaluate(); });
+      });
+    })();
+  </script>
 </body>
 </html>
