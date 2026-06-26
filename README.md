@@ -138,3 +138,12 @@ would incur per-use cost.)
   lighter animation.
 - Fully responsive: the corridor, gallery columns, and the lightbox all adapt down to mobile,
   with a slide-in menu. Respects `prefers-reduced-motion`.
+
+## Credits
+
+Designed, built, and maintained by **Mark Galvez** ([@markgalvez25](https://github.com/markgalvez25))
+for the **MMMA622 – Visual Methods in Photography** exhibit at Mapúa University.
+
+Developed with the assistance of **Claude** (Anthropic's AI assistant, via Claude Code), used
+as a coding aid throughout the project. All design decisions, content, and direction are the
+author's own.
