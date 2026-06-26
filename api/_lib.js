@@ -26,6 +26,21 @@ async function redis(command) {
   return data.result;
 }
 
+// Run many commands in ONE round-trip via the Upstash REST /pipeline endpoint.
+// commands: [["GET","k"],["HGETALL","h"], ...]  →  returns [result, result, ...]
+async function pipeline(commands) {
+  if (!REST_URL || !REST_TOKEN) throw new Error("KV store not configured");
+  const url = REST_URL.replace(/\/$/, "") + "/pipeline";
+  const r = await fetch(url, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${REST_TOKEN}`, "Content-Type": "application/json" },
+    body: JSON.stringify(commands)
+  });
+  if (!r.ok) throw new Error("KV pipeline failed: " + r.status);
+  const data = await r.json();           // [{result}|{error}, ...]
+  return data.map(x => (x && "result" in x ? x.result : null));
+}
+
 // Upstash HGETALL returns a flat array [field, value, field, value, ...]
 function hashToObj(arr, mapVal) {
   const o = {};
@@ -44,4 +59,4 @@ function getBody(req) {
   return {};
 }
 
-module.exports = { redis, hashToObj, getBody };
+module.exports = { redis, pipeline, hashToObj, getBody };

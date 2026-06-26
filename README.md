@@ -115,6 +115,14 @@ its URL, so just keep the link to yourself. It shows: page views, unique visitor
 page, a 14-day views trend, total likes/comments, top photographs, engagement per facet, and
 recent comments.
 
+**Live + auto-insights:** the page **auto-refreshes every 30s** (pausing when the tab is
+hidden, refreshing the instant you return) with a "Live · updated Ns ago" indicator. An
+**Insights** panel automatically reads the live data and writes the key takeaways in plain
+language (busiest page, trend direction, top photo, leading facet, totals). The insights are
+generated client-side from your own metrics — no external AI service or API key required. (If
+you ever want a richer, LLM-written narrative, that can be added via a Claude API key — it
+would incur per-use cost.)
+
 - Data comes from the same Upstash KV store as likes/comments — so it only works on the
   **deployed** site with KV connected (opened locally it shows a "couldn't load" notice).
 - Page views are recorded by `js/track.js` (added to the 4 public pages), which pings
