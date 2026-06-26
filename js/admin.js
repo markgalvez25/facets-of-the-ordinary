@@ -81,7 +81,7 @@
     const daily = views.daily || [];
     const maxDay = Math.max(1, ...daily.map(d => d.count));
     const spark = daily.length
-      ? daily.map(d => `<span style="height:${Math.max(4, Math.round(d.count / maxDay * 100))}%" title="${d.date}: ${d.count}"></span>`).join("")
+      ? daily.map(d => `<span style="height:${Math.max(4, Math.round(d.count / maxDay * 100))}%" data-tip="${fmtDay(d.date)} · ${d.count} view${d.count === 1 ? "" : "s"}"></span>`).join("")
       : `<p class="adm-empty">No view data yet</p>`;
 
     /* Traffic by page */
@@ -185,6 +185,11 @@
       <p>This page only works on the deployed site with the KV store connected.
       (Opened locally there's no <code>/api</code>, so there's nothing to read.)</p>
       <p class="adm-dim">Details: ${esc(e.message)}</p></div>`;
+  }
+  function fmtDay(s) {
+    const m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const p = String(s).split("-");
+    return p.length === 3 ? m[(+p[1]) - 1] + " " + (+p[2]) : s;
   }
   function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
 })();
