@@ -107,6 +107,23 @@ number. See [`api/`](api/) for the three endpoints (`state`, `like`, `comment`) 
 > `python3 -m http.server` above serves the static pages only, so it uses the localStorage
 > fallback — that's expected.
 
+## 📊 Admin metrics page (private)
+
+A private dashboard lives at **`/admin.html`** (e.g. `https://your-site.vercel.app/admin.html`).
+It is **not linked anywhere** on the site and is marked `noindex` — it's reachable only by
+its URL, so just keep the link to yourself. It shows: page views, unique visitors, traffic by
+page, a 14-day views trend, total likes/comments, top photographs, engagement per facet, and
+recent comments.
+
+- Data comes from the same Upstash KV store as likes/comments — so it only works on the
+  **deployed** site with KV connected (opened locally it shows a "couldn't load" notice).
+- Page views are recorded by `js/track.js` (added to the 4 public pages), which pings
+  `/api/track`. It stores **only** a page name and an anonymous random visitor id — no names,
+  emails, or IPs.
+- The admin page itself does **not** track views.
+- Want to lock it behind a passcode later? Set an `ADMIN_KEY` env var in Vercel and ask me to
+  add the check to `api/metrics.js` — right now it's open-by-URL as requested.
+
 ## Notes
 - Smooth scroll & the 3D corridor use Lenis + GSAP from a CDN, loaded as *progressive
   enhancement* — if they fail to load (e.g. offline), the site still works, just with

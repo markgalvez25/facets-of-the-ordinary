@@ -653,3 +653,61 @@ section { position: relative; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ===================== Admin metrics dashboard ===================== */
+.admin-page { background: var(--bg); min-height: 100vh; }
+.adm-wrap { width: min(100% - calc(var(--gutter) * 2), 1080px); margin: 0 auto; padding: clamp(28px, 6vh, 64px) 0 80px; }
+.adm-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; border-bottom: 1px solid var(--line); padding-bottom: 20px; margin-bottom: 22px; }
+.adm-eyebrow { font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.adm-top h1 { font-size: clamp(2rem, 5vw, 3rem); margin-top: 6px; }
+.adm-lock { font-size: 0.8rem; color: var(--faint); margin-top: 10px; }
+.adm-back { font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); padding: 0.6em 1em; border-radius: 100px; white-space: nowrap; transition: border-color 0.3s, color 0.3s; }
+.adm-back:hover { border-color: var(--accent); color: var(--accent); }
+
+.adm-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 14px; }
+.adm-kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.adm-kpi .l { font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.adm-kpi .n { font-family: var(--font-display); font-size: 2.1rem; line-height: 1.1; margin-top: 6px; color: var(--accent-2); }
+
+.adm-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.adm-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+.adm-panel h3 { font-size: 1.1rem; }
+.adm-panel .sub { font-size: 0.7rem; color: var(--faint); margin: 2px 0 16px; }
+.adm-subhead { font-family: var(--font-body); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
+
+.adm-spark { display: flex; align-items: flex-end; gap: 4px; height: 110px; }
+.adm-spark span { flex: 1; background: linear-gradient(var(--accent), rgba(203,163,92,0.22)); border-radius: 3px 3px 0 0; min-height: 4px; }
+.adm-spark span:last-child { background: var(--accent-2); }
+
+.adm-bars { display: flex; flex-direction: column; gap: 12px; }
+.adm-bar { font-size: 0.82rem; }
+.adm-bar .r { display: flex; justify-content: space-between; margin-bottom: 5px; color: var(--muted); }
+.adm-bar .r b { color: var(--text); font-weight: 600; }
+.adm-track { height: 8px; background: var(--surface-2); border-radius: 100px; overflow: hidden; }
+.adm-fill { height: 100%; background: var(--accent); border-radius: 100px; }
+
+.adm-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.adm-table th { text-align: left; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); font-weight: 600; padding: 0 8px 8px 0; }
+.adm-table td { padding: 9px 8px 9px 0; border-top: 1px solid var(--line); color: var(--muted); }
+.adm-table td.t { color: var(--text); }
+.adm-table .rank { color: var(--accent); font-family: var(--font-display); }
+
+.adm-cmt { display: flex; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 0.82rem; }
+.adm-cmt .adm-av { width: 30px; height: 30px; border-radius: 50%; flex: none; background: var(--surface-2); display: grid; place-items: center; color: var(--accent); font-weight: 600; font-size: 0.74rem; }
+.adm-cmt .who { color: var(--text); font-weight: 600; }
+.adm-cmt .meta { color: var(--faint); font-size: 0.7rem; }
+.adm-cmt .txt { color: var(--muted); margin-top: 1px; }
+
+.adm-note { font-size: 0.7rem; color: var(--faint); text-align: center; margin-top: 18px; border-top: 1px solid var(--line); padding-top: 14px; }
+.adm-empty { color: var(--faint); font-size: 0.85rem; padding: 6px 0; }
+.adm-loading { color: var(--muted); padding: 50px 0; text-align: center; }
+.adm-error { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px; }
+.adm-error h3 { font-size: 1.3rem; margin-bottom: 10px; }
+.adm-error p { color: var(--muted); margin-bottom: 8px; }
+.adm-error .adm-dim { color: var(--faint); font-size: 0.78rem; }
+.adm-error code { background: var(--surface-2); padding: 0.1em 0.4em; border-radius: 5px; }
+
+@media (max-width: 760px) {
+  .adm-kpis { grid-template-columns: repeat(2, 1fr); }
+  .adm-grid2 { grid-template-columns: 1fr; }
+}
