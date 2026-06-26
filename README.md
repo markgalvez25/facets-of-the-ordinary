@@ -147,3 +147,7 @@ for the **MMMA622 – Visual Methods in Photography** exhibit at Mapúa Universi
 Developed with the assistance of **Claude** (Anthropic's AI assistant, via Claude Code), used
 as a coding aid throughout the project. All design decisions, content, and direction are the
 author's own.
+
+## License
+
+Released under the [MIT License](LICENSE) — © 2026 Mark Galvez.
